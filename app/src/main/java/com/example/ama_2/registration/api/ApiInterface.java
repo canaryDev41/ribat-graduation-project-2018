@@ -1,6 +1,8 @@
 package com.example.ama_2.registration.api;
 
+import com.example.ama_2.registration.model.CheckPaymentResponse;
 import com.example.ama_2.registration.model.DefaultResponse;
+import com.example.ama_2.registration.model.FormResponse;
 import com.example.ama_2.registration.model.LoginResponse;
 import com.example.ama_2.registration.model.RegistrationResponse;
 import com.example.ama_2.registration.model.ResultResponse;
@@ -30,12 +32,40 @@ public interface ApiInterface {
             @Path("stdID") int stdID
     );
 
+    @GET("student/{stdID}/forms")
+    Call<FormResponse> studentForms(
+            @Path("stdID") int stdID
+    );
+
+    @FormUrlEncoded
+    @POST("student/form")
+    Call<DefaultResponse> studentForm(
+            @Field("type") String type,
+            @Field("student_id") int student_id
+    );
+
     @Multipart
     @POST("student/{stdID}/excuse")
     Call<ResponseBody> addExcuse(
             @Part("type") RequestBody type,
             @Part("note") RequestBody note,
             @Part MultipartBody.Part attach
+    );
+
+    @GET("registration/{stdID}/check")
+    Call<DefaultResponse> registrationCheck(
+            @Path("stdID") int stdID
+    );
+
+    @GET("payment/{stdID}/check")
+    Call<CheckPaymentResponse> paymentCheck(
+            @Path("stdID") int stdID
+    );
+
+    @FormUrlEncoded
+    @POST("registration/payment")
+    Call<DefaultResponse> payment(
+            @Field("student_id") int student_id
     );
 
     @FormUrlEncoded
@@ -45,7 +75,9 @@ public interface ApiInterface {
             @Field("email") String email,
             @Field("phone") String phone,
             @Field("stdID") String stdID,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("acceptance_year") String acceptance_year,
+            @Field("department_id") String department_id
     );
 
     @FormUrlEncoded

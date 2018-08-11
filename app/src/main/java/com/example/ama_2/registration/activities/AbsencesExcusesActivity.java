@@ -2,26 +2,20 @@ package com.example.ama_2.registration.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ama_2.registration.R;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
-
 
 public class AbsencesExcusesActivity extends AppCompatActivity implements View.OnClickListener{
     private static final int IMAGE_REQUEST = 777;
@@ -95,9 +89,7 @@ public class AbsencesExcusesActivity extends AppCompatActivity implements View.O
         }
 
         Toast.makeText(this, "you click me!", Toast.LENGTH_SHORT).show();
-
     }
-
 
     @Override
     public void onClick(View view) {

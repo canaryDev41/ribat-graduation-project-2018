@@ -12,54 +12,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
-        android:padding="30dp"
-        android:background="@color/colorPrimaryDark">
-
-        <TextView
-            android:layout_gravity="right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:textColor="#fff"
-            android:text="مرحباً بكم في التطبيق"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:text="هذا النص هو مثال لنص يمكن استبداله بأي نص أخر. في نفس المنطقه وبنفس المساحه. لقد تم توليد هذا النص من موالد النصوص العربيه!"
-            android:textSize="15sp"
-            android:layout_marginTop="10dp"/>
+        android:padding="15dp">
 
         <LinearLayout
             android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
-            <Button
-                android:layout_margin="10dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/btn_default"
-                android:textColor="#Fff"
+            android:orientation="vertical">
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="قراءة المزيد"/>
-            <Button
-                android:layout_margin="10dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/btn_default"
+                android:layout_gravity="right"
+                android:text="جامعة الرباط الوطني"
                 android:textColor="#fff"
+                android:textSize="28sp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="عن التطبيق"/>
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:text="تطبيق كلية علوم الحاسوب وتقانة المعلومات"
+                android:textColor="#fff"
+                android:textSize="13sp" />
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="right"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo"/>
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_marginTop="50dp"

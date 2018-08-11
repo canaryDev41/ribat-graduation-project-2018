@@ -5,26 +5,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ama_2.registration.api.ApiClient;
 import com.example.ama_2.registration.model.DefaultResponse;
 import com.example.ama_2.registration.R;
+import com.example.ama_2.registration.model.ListWithKeys;
 import com.example.ama_2.registration.storage.SharedPrefManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     EditText etName;
     EditText etEmail;
     EditText etPhone;
     EditText etStdID;
     EditText etPassword;
+    EditText etAcceptance_year;
+    String departmentID;
 
     Button btnSignup;
 
@@ -50,9 +59,37 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         etPhone = (EditText) findViewById(R.id.etPhone);
         etStdID = (EditText) findViewById(R.id.etStdID);
         etPassword = (EditText) findViewById(R.id.etPassword);
+        etAcceptance_year = (EditText) findViewById(R.id.etYear);
 
         btnSignup = (Button) findViewById(R.id.btnRegister);
         btnSignup.setOnClickListener(this);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+//        List<String> categories = new ArrayList<>();
+//        categories.add("information technology");
+//        categories.add("computer science");
+//        categories.add("computer network");
+//        categories.add("information tech diploma");
+
+        List<ListWithKeys> list = new ArrayList<ListWithKeys>();
+        list.add(new ListWithKeys("information technology", 1));
+        list.add(new ListWithKeys("computer science", 2));
+        list.add(new ListWithKeys("computer network", 3));
+        list.add(new ListWithKeys("information tech diploma", 4));
+
+        // Creating adapter for spinner
+        ArrayAdapter<ListWithKeys> dataAdapter = new ArrayAdapter<ListWithKeys>(this, android.R.layout.simple_spinner_item, list);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
     }
 
@@ -62,6 +99,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         String phone = etPhone.getText().toString().trim();
         String stdID = etStdID.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+        String acceptance_year = etAcceptance_year.getText().toString().trim();
 
         /*
           here i can implement more validation technique
@@ -107,7 +145,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        Call<DefaultResponse> call = ApiClient.getInstance().getApi().register(name, email, phone, stdID, password);
+        Call<DefaultResponse> call = ApiClient.getInstance().getApi().register(name, email, phone, stdID, password, acceptance_year, departmentID);
 
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
@@ -141,5 +179,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 studentSignup();
                 break;
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        ListWithKeys s = (ListWithKeys) adapterView.getItemAtPosition(i);
+        Object key = s.key;
+
+        departmentID = key.toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        departmentID = "1";
     }
 }

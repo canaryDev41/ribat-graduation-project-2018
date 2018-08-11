@@ -28,7 +28,10 @@
         <activity android:name=".activities.RegistrationActivity" />
         <activity android:name=".activities.ResultDetailsActivity" />
         <activity android:name=".activities.ExcusesDashboardActivity" />
-        <activity android:name=".activities.RegDashboardActivity"></activity>
+        <activity android:name=".activities.RegDashboardActivity" />
+        <activity android:name=".activities.FormActivity" />
+        <activity android:name=".activities.AddFormActivity" />
+        <activity android:name=".activities.PaymentActivity"></activity>
     </application>
 
 </manifest>

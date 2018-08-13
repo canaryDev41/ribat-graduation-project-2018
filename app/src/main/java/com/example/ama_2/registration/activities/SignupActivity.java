@@ -69,13 +69,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         // Spinner click listener
         spinner.setOnItemSelectedListener(this);
 
-        // Spinner Drop down elements
-//        List<String> categories = new ArrayList<>();
-//        categories.add("information technology");
-//        categories.add("computer science");
-//        categories.add("computer network");
-//        categories.add("information tech diploma");
-
         List<ListWithKeys> list = new ArrayList<ListWithKeys>();
         list.add(new ListWithKeys("information technology", 1));
         list.add(new ListWithKeys("computer science", 2));
@@ -113,6 +106,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             etEmail.setError("enter valid email");
+            etEmail.requestFocus();
+            return;
         }
 
         if (email.isEmpty()){
@@ -145,7 +140,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        Call<DefaultResponse> call = ApiClient.getInstance().getApi().register(name, email, phone, stdID, password, acceptance_year, departmentID);
+        Call<DefaultResponse> call = ApiClient.
+                                        getInstance().
+                                        getApi().
+                                        register(name, email, phone, stdID, password, acceptance_year, departmentID);
 
         call.enqueue(new Callback<DefaultResponse>() {
             @Override

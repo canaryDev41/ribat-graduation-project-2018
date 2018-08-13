@@ -89,15 +89,15 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("registration")
-    Call<RegistrationResponse> registration(
+    Call<DefaultResponse> registration(
             @Field("student_id") int student_id,
             @Field("semester") String semester,
             @Field("level") String level,
             @Field("blood") String blood,
             @Field("phone") String phone,
-            @Field("parent_name") String parentName,
-            @Field("parent_job") String parentJob,
-            @Field("parent_phone") String parentPhone,
+            @Field("parentName") String parentName,
+            @Field("parentJob") String parentJob,
+            @Field("parentPhone") String parentPhone,
             @Field("nationality") String nationality,
             @Field("religion") String religion
     );

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.ama_2.registration.R;
 import com.example.ama_2.registration.api.ApiClient;
 import com.example.ama_2.registration.model.DefaultResponse;
-import com.example.ama_2.registration.model.RegistrationResponse;
+import com.example.ama_2.registration.model.DefaultResponse;
 import com.example.ama_2.registration.storage.SharedPrefManager;
 
 import retrofit2.Call;
@@ -56,11 +56,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         int student_id = SharedPrefManager.getInstance(this).getStudent().getId();
 
-        Call<RegistrationResponse> call = ApiClient.getInstance().getApi().registration(student_id, semester, level, blood, phone, parentName, parentJob, parentPhone, nationality, religion);
+        Call<DefaultResponse> call = ApiClient.getInstance().getApi().registration(student_id, semester, level, blood, phone, parentName, parentJob, parentPhone, nationality, religion);
 
-        call.enqueue(new Callback<RegistrationResponse>() {
+        call.enqueue(new Callback<DefaultResponse>() {
             @Override
-            public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 if (!response.body().isError()){
                     Toast.makeText(RegistrationActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }else{
@@ -69,7 +69,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             }
 
             @Override
-            public void onFailure(Call<RegistrationResponse> call, Throwable t) {
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
                 Toast.makeText(RegistrationActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -81,7 +81,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         switch (view.getId()){
             case R.id.btnRegister:
                 registration();
-            break;
+                break;
         }
 
     }

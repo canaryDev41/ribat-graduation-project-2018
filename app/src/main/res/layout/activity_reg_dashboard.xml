@@ -30,11 +30,64 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="الرجاء ملء جميع الحقول أدناه, لإكمال عملية التسجيل بصوره صحيحه, عند الضغط على زر تسجيل سوف يتم مراجعة حسابك أولا ثم يستم تفعيله من قبل الإداره."
+                android:text="..."
                 android:textColor="#fff"
                 android:textSize="15sp" />
 
         </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:visibility="invisible"
+            android:id="@+id/cvRegStatus"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvRegistered"
+                android:visibility="invisible"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="انت مسجل بالفعل. يمكنك الدفع عن طريق الضغط على زر السداد بالاسفل !"/>
+
+            <TextView
+                android:id="@+id/tvUnRegistered"
+                android:visibility="invisible"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="انت غير مسجل بعد يمكنك التسجيل من خلال الغضط على زر التسجيل بالاسفل!"/>
+
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:visibility="invisible"
+                android:id="@+id/btnPay"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/btn_primary"
+                android:textColor="#fff"
+                android:text="سداد الرسوم"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:visibility="invisible"
+                android:id="@+id/btnRegister"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/btn_primary"
+                android:textColor="#fff"
+                android:text="التسجيل"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
 </LinearLayout>

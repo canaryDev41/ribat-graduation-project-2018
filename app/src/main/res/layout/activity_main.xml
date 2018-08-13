@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="جامعة الرباط الوطني"
-                android:textColor="#fff"
+                android:textColor="#ffffff"
                 android:textSize="28sp" />
 
             <TextView
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
-                android:text="تطبيق كلية علوم الحاسوب وتقانة المعلومات"
+                android:text="كلية دراسات الحاسوب فرع الخرطوم"
                 android:textColor="#fff"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -90,7 +90,6 @@
         android:textAlignment="textEnd"
         android:inputType="textPassword"/>
 </android.support.design.widget.TextInputLayout>
-
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
 
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
-            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
             startActivity(intent);
@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
-
 
         etStdID = (EditText) findViewById(R.id.etStdID);
         etPassword = (EditText)findViewById(R.id.etPassword);
@@ -92,9 +90,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 LoginResponse loginResponse = response.body();
 
                 if (!loginResponse.isError()){
+                    //here student was saved...
                     SharedPrefManager.getInstance(getApplicationContext()).saveStudent(loginResponse.getStudent());
 
+                    //here student redirected to dashboard activity
                     Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                     startActivity(intent);
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 case R.id.tvRegister:
                     startActivity(new Intent(getApplicationContext(), SignupActivity.class));
-                    break;
+                break;
         }
     }
 }
